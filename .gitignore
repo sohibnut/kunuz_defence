@@ -3,3 +3,4 @@ media
 */__pycache__/*
 db.sqlite3
 news/migrations/*
+config.py
