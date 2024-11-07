@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+    <h1>{{category_name}}</h1>
+    <<table>
+        {% for new in news %}
+            <tr>
+                <td><a href={% url "detailpage" new.id %}>{{new.title}}</a></td>
+                <td><img src="{{new.image.url}}" alt="" style="width: 250px; height: 150px"></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

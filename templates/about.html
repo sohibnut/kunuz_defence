@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <table>
+        <tr>
+            <td>
+                <h1>{{about.title}} </h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="{{about.image.url}}" alt="" style="width: 1000px; height: 600px;">
+            </td>
+            <td>
+                <form action={% url "comment" %} method="post">
+                    {% csrf_token %}
+                    <table>
+
+                            {% for field in form %}
+                            <tr>
+                                <td>
+                                    <h2>{{field.name}}</h2>
+                                </td>
+                                <td>
+                                    {{field}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                    </table>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>{{about.body}} </p>
+            </td>
+        </tr>
+    </table>
+
+{% endblock content %}
+

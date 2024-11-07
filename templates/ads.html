@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Reklamalar</h1>
+
+<table>
+    {% for new in ads %}
+        <tr>
+            <td>{{new.title}}</a></td>
+            <td><img src="{{new.image.url}}" alt="" style="width: 250px; height: 150px"></td>
+            <td> {{new.body}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

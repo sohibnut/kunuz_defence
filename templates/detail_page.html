@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <table> 
+        <tr>
+            <td>
+                <h6> category : {{new.category.name}} </h6>
+                <h6> vaqt : {{new.create_at}} </h6>
+                <h6> 👀 {{new.view_count}} </h6>
+                <h1> {{new.title}} </h1>
+                <img src="{{new.image.url}}" alt="" style="width: 300px; height: 300px">
+
+                <p> {{new.body}} </p>
+
+            </td>
+            <td>
+                {% for new in recommendation %}
+                    <a href={% url "detailpage" new.id %}>{{new.title}}</a>
+                    <br>
+                    <h6> 📅 {{new.create_at}} </h6>
+                    <h4> 👁 {{new.view_count}} </h4>
+                    <h5>{{new.category.name}}</h5>
+                    <br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for new in last_news %}
+                    <a href={% url "detailpage" new.id %}>{{new.title}}</a>
+                    <br>
+                    <h6> 📅 {{new.create_at}} </h6>
+                    <h4> 👁 {{new.view_count}} </h4>
+                    <h5>{{new.category.name}}</h5>
+                    <br>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+
+    
+
+    <table>
+        <tr>
+            {% for tag in new.tags.all %}
+                <td> <a href={% url "tagfilter" tag.id %}>{{ tag.name }}</a>   </td>
+            {% endfor %}
+        </tr>
+    </table>
+
+{% endblock content %}
+

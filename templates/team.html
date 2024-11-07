@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Person List</h1>
+<div class="container">
+    {% for person in persons %}
+    <div class="person-card">
+        <img src="{{ person.image.url }}" alt="{{ person.name }}" style="width: 200px; height:200px; border-radius:50%">
+        <h3>{{ person.name }}</h3>
+        <h4> {{person.position}} </h4>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

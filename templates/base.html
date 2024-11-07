@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kun uz</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            {% comment %} text-align: center; {% endcomment %}
+        }
+        td, th {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 ustun */
+            gap: 10px;
+        }
+        .person-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        .person-card img {
+            width: 100%;
+            height: auto;
+            max-height: 250px; /* Rasmlar balandligini cheklash */
+        }
+    </style>
+</head>
+<body> 
+    
+    <table>
+        <tr>
+            <td>
+                <a href="{% url "index" %}">
+                <img src={% static 'images/logo.png' %} alt="" style="width: 128px; height: 42px">
+                </a>
+            </td>
+            <td><h3>Categories</h3></td>
+            {% for category in categories %}
+                <td> <a href={% url "categoryfilter" category.id %}>{{ category.name }}</a>   </td>
+            {% endfor %}
+        </tr>
+    </table>
+    {% block content %}
+    
+    {% endblock content %}
+    
+    <table>
+        <tr>
+            <td>
+                <img src={% static 'images/logo.png' %} alt="" style="width: 128px; height: 42px">
+            </td>
+            <td>
+                <a href="{% url "aboutus" %}">About Us</a>
+            </td>
+            <td>
+                <a href="{% url "reklama" %}">Reklama</a>
+            </td>
+            <td>
+                <a href="{% url "team" %}">Our team</a>
+            </td>
+            <td><h3>Socials</h3></td>
+            {% for social in socials %}
+                <td><a href="{{social.link}}"> 
+                    <img src="{{social.icon.url}}" alt="" style="width: 50px; height: 50px"> 
+                </a></td>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>
